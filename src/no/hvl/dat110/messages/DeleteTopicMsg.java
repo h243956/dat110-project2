@@ -21,6 +21,11 @@ public class DeleteTopicMsg extends Message {
 		this.topic = topic;
 	}
 
+	public String toString() {
+		
+		return "[DeleteTopicMsg : " + topic + "]" + super.toString();
+	}
+
 	// Constructor, get/set-methods, and toString method
 	// as described in the project text
 

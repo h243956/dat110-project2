@@ -20,6 +20,11 @@ public class SubscribeMsg extends Message {
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
+	
+	public String toString() {
+		
+		return "[SubscribeMsg : " + topic + "]" + super.toString();
+	}
 	// Constructor, get/set-methods, and toString method
 	// as described in the project text
 		
