@@ -16,22 +16,13 @@ public class TemperatureDevice {
 		
 		client.connect();
 		
-		client.publish("temperature", Integer.toString(sn.read()));
+		for (int i = 0; i < COUNT; i++) {
+			client.publish("temperature", Integer.toString(sn.read()));
+		}
 		
 		client.disconnect();
-		// TODO - start
-
-		// create a client object and use it to
-
-		// - connect to the broker
-		// - publish the temperature(s)
-		// - disconnect from the broker
-
-		// TODO - end
-
+		
 		System.out.println("Temperature device stopping ... ");
-
-		throw new UnsupportedOperationException(TODO.method());
 
 	}
 }
