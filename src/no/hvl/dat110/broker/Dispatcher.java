@@ -92,11 +92,14 @@ public class Dispatcher extends Stopable {
 		Logger.log("onConnect:" + msg.toString());
 
 		storage.addClientSession(user, connection);
+		storage.createMessageBuffer(user);
 		
 		Set<Message> msgs = storage.getMessages(user);
 		ClientSession cs = storage.getSession(user);
+		if(!msgs.isEmpty()) {
+			msgs.forEach((m) -> cs.send(m));
+		}
 		
-		msgs.forEach((m) -> cs.send(m));
 	}
 
 	// called by dispatch upon receiving a disconnect message
@@ -152,7 +155,6 @@ public class Dispatcher extends Stopable {
 			if(cs!=null) {
 				cs.send(msg);
 			} else {
-				storage.createMessageBuffer(user);
 				storage.addMessage(user, msg);
 			}
 		});
